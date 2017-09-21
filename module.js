@@ -1,7 +1,7 @@
 import { args, globals } from 'fit-core';
 import bs from 'browser-sync';
 
-export default function init (config) {
+export function init (config) {
 	if (args.env() === 'develop') {
 		let current = bs.create ('app');
 
