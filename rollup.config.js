@@ -1,10 +1,11 @@
 import commonjs from 'rollup-plugin-commonjs';
 import nodeResolve from 'rollup-plugin-node-resolve';
+import * as pkg from './package.json';
 
 export default {
-	input: './module',
+	input: pkg.module,
 	output: {
-		file: 'bundle.js',
+		file: pkg.main,
 		format: 'cjs'
 	},
 	external: [
