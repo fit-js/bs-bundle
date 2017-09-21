@@ -9,7 +9,7 @@ export default {
 		format: 'cjs'
 	},
 	external: ['fit-core', 'browser-sync'],
-	name: 'bs-bundle',
+	name: pkg.name,
 	plugins: [
 		nodeResolve ({
 			jsnext: true,
