@@ -1,8 +1,8 @@
 {
   "name": "bs-bundle",
-  "version": "0.0.3",
+  "version": "0.0.6",
   "dependencies": {
-    "fit-cli": "^0.0.7",
+    "fit-core": "^0.0.1",
     "browser-sync": "^2.18.0"
   },
   "devDependencies": {

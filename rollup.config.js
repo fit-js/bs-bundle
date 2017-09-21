@@ -8,35 +8,7 @@ export default {
 		file: pkg.main,
 		format: 'cjs'
 	},
-	external: [
-		'utf-8-validte',
-
-		'assert',
-		'fs',
-		'path',
-		'process',
-		'events',
-		'module',
-		'http',
-		'https',
-		'os',
-		'url',
-		'util',
-		'punycode',
-		'buffer',
-		'zlib',
-		'dgram',
-		'querystring',
-		'string_decoder',
-		'tls',
-		'crypto',
-		'dns',
-		'constants',
-		'net',
-		'child_process',
-		'stream',
-		'tty'
-	],
+	external: ['fit-core', 'browser-sync'],
 	name: 'bs-bundle',
 	plugins: [
 		nodeResolve ({

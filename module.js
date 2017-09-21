@@ -1,9 +1,8 @@
+import { args, globals } from 'fit-core';
 import bs from 'browser-sync';
 
-const core = require ('fit-cli');
-
 export default function init (config) {
-	if (core.args.env() === 'develop') {
+	if (args.env() === 'develop') {
 		let current = bs.create ('app');
 
 		let options = {
@@ -44,6 +43,6 @@ export default function init (config) {
 
 		current.init (options);
 
-		core.globals.set ('bs', current);
+		globals.set ('bs', current);
 	}
 }
