@@ -27,6 +27,9 @@ export function init (config) {
 			options.proxy = {
 				target: config.proxy
 			};
+		}
+
+		if (config.proxy && config.assets) {
 			options.serveStatic = [{
 				route: config.assets.alias,
 				dir: config.assets.path
