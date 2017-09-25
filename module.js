@@ -38,9 +38,7 @@ export function init (config) {
 
 		if (config.watch) {
 			current
-				.watch (config.watch, {
-					cwd: config.assets.path
-				})
+				.watch (config.watch)
 				.on ('change', current.reload);
 		}
 
