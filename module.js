@@ -1,8 +1,7 @@
-import { args, globals } from 'fit-core';
 import bs from 'browser-sync';
 
-export function init (config) {
-	if (args.env() === 'develop') {
+export function init (config, core) {
+	if (core.args.env() === 'develop') {
 		let current = bs.create ('app');
 
 		let options = {
@@ -44,6 +43,6 @@ export function init (config) {
 
 		current.init (options);
 
-		globals.set ('bs', current);
+		core.globals.set ('bs', current);
 	}
 }
