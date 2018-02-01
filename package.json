@@ -1,6 +1,6 @@
 {
   "name": "bs-bundle",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "dependencies": {
     "browser-sync": "^2.18.0"
   },

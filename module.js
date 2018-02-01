@@ -1,4 +1,6 @@
 import bs from 'browser-sync';
+import { spawn } from 'child_process';
+const LOCAL_SERVER_PORT = '2999';
 
 export function init (config, core) {
 	if (core.args.env() === 'develop') {
@@ -14,8 +16,33 @@ export function init (config, core) {
 			logFileChanges: false,
 			logConnections: false
 		};
-
-
+		
+		if (!config.proxy) {
+			let phpServer;
+			let local_server = (config.host) ?
+				config.host +':'+ LOCAL_SERVER_PORT :
+				'localhost:' + LOCAL_SERVER_PORT;
+			
+			if (!config.root) {
+				phpServer = spawn('php', ['-S', local_server]);
+			} else {
+				phpServer = spawn('php', ['-S', local_server, '-t', config.root]);
+			}
+			config.proxy = local_server;
+			
+			// phpServer.stdout.on('data', (data) => {
+			// 	console.log('stdout: ' + data);
+			// });
+			
+			phpServer.stderr.on('data', (data) => {
+				console.log('stderr: '+ data);
+			});
+			
+			phpServer.on('close', (code) => {
+				console.log('child process exited with code '+ code);
+			});
+		}
+		
 		if (!config.proxy && config.root) {
 			options.server = {
 				baseDir: config.root
