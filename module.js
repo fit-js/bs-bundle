@@ -17,11 +17,9 @@ export function init (config, core) {
 			logConnections: false
 		};
 		
-		if (!config.proxy) {
+		if (!config.proxy && config.host) {
 			let phpServer;
-			let local_server = (config.host) ?
-				config.host +':'+ LOCAL_SERVER_PORT :
-				'localhost:' + LOCAL_SERVER_PORT;
+			let local_server = config.host +':'+ LOCAL_SERVER_PORT;
 			
 			if (!config.root) {
 				phpServer = spawn('php', ['-S', local_server]);
@@ -29,10 +27,6 @@ export function init (config, core) {
 				phpServer = spawn('php', ['-S', local_server, '-t', config.root]);
 			}
 			config.proxy = local_server;
-			
-			// phpServer.stdout.on('data', (data) => {
-			// 	console.log('stdout: ' + data);
-			// });
 			
 			phpServer.stderr.on('data', (data) => {
 				console.log('stderr: '+ data);

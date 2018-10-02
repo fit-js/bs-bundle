@@ -1,8 +1,13 @@
 {
   "name": "bs-bundle",
-  "version": "0.0.13",
+  "version": "0.0.14",
+  "scripts": {
+    "dev": "rollup -c --watch",
+    "prod": "rollup -c"
+  },
   "dependencies": {
-    "browser-sync": "^2.18.0"
+    "browser-sync": "latest",
+    "rollup": "^0.50.1"
   },
   "devDependencies": {
     "rollup-plugin-commonjs": "^8.2.1",
